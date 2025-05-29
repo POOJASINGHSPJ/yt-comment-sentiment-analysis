@@ -36,7 +36,7 @@ def preprocess_comment(comment):
 
 # Load model and vectorizer
 def load_model_and_vectorizer(model_name, model_version, vectorizer_path):
-    mlflow.set_tracking_uri("http://ec2-13-50-240-54.eu-north-1.compute.amazonaws.com:5001/")
+    mlflow.set_tracking_uri("http://16.16.80.242:5000/")
     client = MlflowClient()
     model_uri = f"models:/{model_name}/{model_version}"
     model = mlflow.pyfunc.load_model(model_uri)
@@ -250,4 +250,5 @@ def generate_trend_graph():
         return jsonify({"error": f"Trend graph generation failed: {str(e)}"}), 500
 
 if __name__ == '__main__':
+    print("hi")
     app.run(host='0.0.0.0', port=5000, debug=True)
